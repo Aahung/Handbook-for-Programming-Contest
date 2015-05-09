@@ -1,0 +1,21 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Intro}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}The codes are ``bad codes''}{3}{subsection.1.1.1}
+\contentsline {section}{\numberline {1.2}Contribution}{3}{section.1.2}
+\contentsline {chapter}{\numberline {2}Topics}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}I/O}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}In}{5}{subsection.2.1.1}
+\contentsline {subsubsection}{scanf}{5}{subsubsection*.3}
+\contentsline {subsubsection}{gets}{5}{subsubsection*.4}
+\contentsline {subsection}{\numberline {2.1.2}Out}{6}{subsection.2.1.2}
+\contentsline {subsubsection}{printf}{6}{subsubsection*.5}
+\contentsline {section}{\numberline {2.2}Evaluation}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Expression Forms}{6}{subsection.2.2.1}
+\contentsline {subsubsection}{Infix}{6}{subsubsection*.6}
+\contentsline {subsubsection}{Prefix}{6}{subsubsection*.7}
+\contentsline {subsubsection}{Postfix}{7}{subsubsection*.8}
+\contentsline {subsection}{\numberline {2.2.2}Expression Evaluation}{7}{subsection.2.2.2}
+\contentsline {subsubsection}{Postfix}{7}{subsubsection*.9}
+\contentsline {subsubsection}{Infix}{7}{subsubsection*.10}
+\contentsline {chapter}{\numberline {3}Indices and tables}{9}{chapter.3}

@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>I/O &mdash; Handbook for Programming Contest 0.1 alpha documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1 alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Handbook for Programming Contest 0.1 alpha documentation" href="../index.html" />
+    <link rel="up" title="Topics" href="../topics.html" />
+    <link rel="prev" title="Topics" href="../topics.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../topics.html" title="Topics"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Handbook for Programming Contest 0.1 alpha documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../topics.html" accesskey="U">Topics</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="i-o">
+<h1>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h1>
+<p>I/O exists in every program, in most cases it is easy, some cases are annoying.</p>
+<p>I recommend you to use C instead C++ especially when the input or output is small.
+The advantage of performance using C I/O is obvious, while C++ may handle some
+situation quite friendly.</p>
+<div class="section" id="in">
+<h2>In<a class="headerlink" href="#in" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scanf">
+<h3>scanf<a class="headerlink" href="#scanf" title="Permalink to this headline">¶</a></h3>
+<p>Reading from stdio, we often use <code class="docutils literal"><span class="pre">scanf</span></code> (<a class="reference external" href="http://en.cppreference.com/w/cpp/io/c/fscanf">scanf doc</a>).</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>scanf(&quot;%d&quot;, &amp;a_int); // read int
+scanf(&quot;%ld&quot;, &amp;a_long); // read long
+scanf(&quot;%lld&quot;, &amp;a_longlong); // read long long
+scanf(&quot;%llu&quot;, &amp;a_unsignedlonglong); // read unsigned long long
+scanf(&quot;%f&quot;, &amp;a_float); // read float
+scanf(&quot;%lf&quot;, &amp;a_double); // read double
+</pre></div>
+</div>
+<p>and of course, character array:</p>
+<div class="highlight-python"><div class="highlight"><pre>char string[LENGTH];
+scanf(&quot;%s&quot;, &amp;string);
+</pre></div>
+</div>
+</div>
+<div class="section" id="gets">
+<h3>gets<a class="headerlink" href="#gets" title="Permalink to this headline">¶</a></h3>
+<p>While if you want to read a whole line string containing spaces, <code class="docutils literal"><span class="pre">scanf</span></code> may not
+be the best choice, and <code class="docutils literal"><span class="pre">gets</span></code> (<a class="reference external" href="http://en.cppreference.com/w/cpp/io/c/gets">gets doc</a>) is obviously better. (although some IDE will warn
+you it is not safe, go to hell!)</p>
+<p>Here is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre>char string[LENGTH];
+gets(string);
+</pre></div>
+</div>
+<p>WATCH OUT!! In this case, special attentions: if the stdin is:</p>
+<div class="highlight-python"><div class="highlight"><pre>1
+I am lucky!
+&lt;EOF&gt;
+</pre></div>
+</div>
+<p>and the code is:</p>
+<div class="highlight-python"><div class="highlight"><pre>int i;
+scanf(&quot;%d&quot;, &amp;i);
+char string_unlucky[100], string_lucky[100];
+gets(string_unlucky);
+gets(string_lucky);
+printf(&quot;string_unlucky is: %s\n&quot;, string_unlucky);
+printf(&quot;  string_lucky is: %s\n&quot;, string_lucky);
+</pre></div>
+</div>
+<p>You will get the output:</p>
+<div class="highlight-python"><div class="highlight"><pre>string_unlucky is:
+  string_lucky is: I am lucky!
+</pre></div>
+</div>
+<p>try to figure out why.</p>
+</div>
+</div>
+<div class="section" id="out">
+<h2>Out<a class="headerlink" href="#out" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="printf">
+<h3>printf<a class="headerlink" href="#printf" title="Permalink to this headline">¶</a></h3>
+<p>Basically, we use <code class="docutils literal"><span class="pre">printf</span></code> (<a class="reference external" href="http://en.cppreference.com/w/cpp/io/c/fprintf">printf doc</a>) for put content to stdout.</p>
+<p>Just do it similarly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a_int</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">I/O</a><ul>
+<li><a class="reference internal" href="#in">In</a><ul>
+<li><a class="reference internal" href="#scanf">scanf</a></li>
+<li><a class="reference internal" href="#gets">gets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#out">Out</a><ul>
+<li><a class="reference internal" href="#printf">printf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../topics.html"
+                        title="previous chapter">Topics</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/topics/io.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Xinhong.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="../_sources/topics/io.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

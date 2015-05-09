@@ -6,6 +6,12 @@
 Handbook for Programming Contest
 =======================================
 
+- `PDF`_
+- `GitHub`_
+
+.. _PDF: ../latex/handbook.pdf
+.. _GitHub: https://github.com/Aahung/Handbook-for-Programming-Contest
+
 Contents:
 
 .. toctree::

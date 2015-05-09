@@ -17,5 +17,6 @@
 \contentsline {subsubsection}{Postfix}{7}{subsubsection*.8}
 \contentsline {subsection}{\numberline {2.2.2}Expression Evaluation}{7}{subsection.2.2.2}
 \contentsline {subsubsection}{Postfix}{7}{subsubsection*.9}
-\contentsline {subsubsection}{Infix}{7}{subsubsection*.10}
+\contentsline {subsubsection}{Prefix}{8}{subsubsection*.10}
+\contentsline {subsubsection}{Infix}{8}{subsubsection*.11}
 \contentsline {chapter}{\numberline {3}Indices and tables}{9}{chapter.3}

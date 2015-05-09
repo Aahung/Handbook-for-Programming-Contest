@@ -128,6 +128,14 @@
 \tableofcontents
 \phantomsection\label{index::doc}
 
+\begin{itemize}
+\item {} 
+PDF
+
+\item {} 
+\href{https://github.com/Aahung/Handbook-for-Programming-Contest}{GitHub}
+
+\end{itemize}
 
 Contents:
 
@@ -164,8 +172,9 @@ But readability is really an issue considering the insanely short variables
 in the template made by Shanghai JiaoTong University.
 
 A nice code style gives you a nice mood during the contest. So in this handbook,
-the variables' naming will be \emph{intention-revealing}, and as short as possible under
-the former condition.
+the variables' naming will be \emph{intention-revealing}, readability is first concern,
+I need you to understand the code first, then you will not make typing mistake,
+finally you will type fast.
 
 
 \section{Contribution}
@@ -322,19 +331,81 @@ Create a stack to store operands
 
 \item {} 
 Scan the expression from left to right, token by token
-- if the token is an operand, push it to stack
-- if the token is an operator, pop the operands and
-\begin{quote}
+\begin{itemize}
+\item {} 
+if the token is an operand, push it to stack
 
+\item {} 
+if the token is an operator, pop the operands and
 apply operetor to the operands in the stack and
 push the result back to stack
-\end{quote}
+
+\end{itemize}
 
 \end{enumerate}
 
+Here is an example, the operands are single-digit integers, and operators are \code{+ - * /}.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZsh{}include \PYGZlt{}stdio.h\PYGZgt{}
+\PYGZsh{}include \PYGZlt{}stack\PYGZgt{}
+\PYGZsh{}include \PYGZlt{}string.h\PYGZgt{}
+
+bool is\PYGZus{}operator(char character) \PYGZob{}
+    if (character == \PYGZsq{}+\PYGZsq{} \textbar{}\textbar{} character == \PYGZsq{}\PYGZhy{}\PYGZsq{}
+          \textbar{}\textbar{} character == \PYGZsq{}*\PYGZsq{} \textbar{}\textbar{} character == \PYGZsq{}/\PYGZsq{})
+        return true;
+    else
+        return false;
+\PYGZcb{}
+
+int perform\PYGZus{}operation(char the\PYGZus{}operator,
+      int operand\PYGZus{}left, int operand\PYGZus{}right) \PYGZob{}
+    if (the\PYGZus{}operator == \PYGZsq{}+\PYGZsq{}) return operand\PYGZus{}left + operand\PYGZus{}right;
+    else if (the\PYGZus{}operator == \PYGZsq{}\PYGZhy{}\PYGZsq{}) return operand\PYGZus{}left \PYGZhy{} operand\PYGZus{}right;
+    else if (the\PYGZus{}operator == \PYGZsq{}*\PYGZsq{}) return operand\PYGZus{}left * operand\PYGZus{}right;
+    else return operand\PYGZus{}left / operand\PYGZus{}right;
+\PYGZcb{}
+
+int evaluate\PYGZus{}postfix(char *expression) \PYGZob{}
+    int length = strlen(expression);
+
+    std::stack\PYGZlt{}int\PYGZgt{} operands;
+    for (int i = 0; i \PYGZlt{} length; ++i) \PYGZob{}
+        if (is\PYGZus{}operator(expression[i])) \PYGZob{}
+            int operand\PYGZus{}right = operands.top(); // right comes first
+            operands.pop();
+            int operand\PYGZus{}left = operands.top();
+            operands.pop();
+            operands.push(perform\PYGZus{}operation(expression[i],
+                          operand\PYGZus{}left, operand\PYGZus{}right));
+        \PYGZcb{} else \PYGZob{}
+            operands.push(expression[i] \PYGZhy{} \PYGZsq{}0\PYGZsq{});
+        \PYGZcb{}
+    \PYGZcb{}
+    return operands.top();
+\PYGZcb{}
+
+int main() \PYGZob{}
+    char expression[] = \PYGZdq{}12+3*4+\PYGZdq{};
+        printf(\PYGZdq{}\PYGZpc{}s = \PYGZpc{}d\PYGZbs{}n\PYGZdq{}, expression, evaluate\PYGZus{}postfix(expression));
+\PYGZcb{}
+\end{Verbatim}
+
+and the output is:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+12+3*4+ = 13
+\end{Verbatim}
+
+
+\subsubsection{Prefix}
+\label{topics/evaluation:id2}
+Similar to postfix.
+
 
 \subsubsection{Infix}
-\label{topics/evaluation:id2}
+\label{topics/evaluation:id3}
 Translate into postfix then evaluate it. (smart)
 
 
